@@ -15,21 +15,41 @@ function getInterfaces () {
 
 console.log(getInterfaces())
 
+function setMacWin (ip, mac, interfaceName) {
+  return new Promise((resolve, reject) => {
+    let arp = spawn('netsh', ['-c', 'interface', 'ipv4', 'set', 'neighbors', interfaceName, ip, mac])
+    let errstream = ''
+    // let buffer = ''
+    // arp.stdout.on('data', function (data) {
+    //   buffer += data
+    // })
+    arp.stderr.on('data', function (data) {
+      errstream += data
+    })
+    arp.on('close', function (code) {
+      if (code !== 0) reject(errstream)
+      resolve()
+    })
+  })
+}
+
 module.exports = arp
 arp.setMac = function (ip, mac) {
+  if (process.platform.includes('win')) {
+    mac = mac.replace(/:/g, '-')
+    let interfaces = getInterfaces()
+    let promises = interfaces.map(intf => setMacWin(ip, mac, intf))
+    return Promise.all(promises)
+  }
   return new Promise((resolve, reject) => {
-    if (process.platform.includes('win')) {
-      mac = mac.replace(/:/g, '-')
-      // netsh -c interface ipv4 set neighbors ${window.interface_name}
-    }
-    var arp = spawn("arp", [ "-S", ip, mac ])
-    var buffer = '';
-    var errstream = '';
-    arp.stdout.on('data', function (data) {
-      buffer += data;
-    })
+    let arp = spawn('arp', [ '-S', ip, mac ])
+    let errstream = ''
+    // let buffer = ''
+    // arp.stdout.on('data', function (data) {
+    //   buffer += data;
+    // })
     arp.stderr.on('data', function (data) {
-      errstream += data;
+      errstream += data
     })
 
     arp.on('close', function (code) {
