@@ -13,8 +13,6 @@ function getInterfaces () {
   return options
 }
 
-console.log(getInterfaces())
-
 function setMacWin (ip, mac, interfaceName) {
   return new Promise((resolve, reject) => {
     let arp = spawn('netsh', ['-c', 'interface', 'ipv4', 'set', 'neighbors', interfaceName, ip, mac])
