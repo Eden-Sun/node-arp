@@ -18,7 +18,7 @@ const arp = require('node-arp')
 module.exports = arp
 arp.setMac = function (ip, mac) {
   return new Promise((resolve, reject) => {
-    if (process.platform.inlcudes('win')) {
+    if (process.platform.includes('win')) {
       mac = mac.replace(/:/g, '-')
     }
     var arp = spawn("arp", [ "-S", ip, mac ])
