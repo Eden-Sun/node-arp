@@ -7,9 +7,9 @@ const testMac = '5c:3d:33:af:6b:5' + Math.floor(Math.random() * 10)
 // const testMac = '5c:3d:33:af:6b:56'
 console.log('testing Mac = ', testMac)
 describe('api spec test', () => {
-  it('set arp', (done) => {
-    lib.setMac(testIP, testMac).then(done)
-  })
+  it('set arp', () =>
+    lib.setMac(testIP, testMac)
+  )
 
   it('read result', function (done) {
     this.timeout(20000)
