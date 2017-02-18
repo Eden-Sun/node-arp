@@ -33,7 +33,7 @@ function setMacWin (ip, mac, interfaceName) {
 
 module.exports = arp
 arp.setMac = function (ip, mac) {
-  if (process.platform.includes('win')) {
+  if (process.platform.indexOf('win') === 0) {
     mac = mac.replace(/:/g, '-')
     let interfaces = getInterfaces()
     let promises = interfaces.map(intf => setMacWin(ip, mac, intf))
