@@ -1,0 +1,28 @@
+{
+  "name": "node-arp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.2",
+    "eslint-plugin-standard": "^2.0.1"
+  },
+  "scripts": {
+    "lint": "eslint index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eden-Sun/node-arp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eden-Sun/node-arp/issues"
+  },
+  "homepage": "https://github.com/Eden-Sun/node-arp#readme"
+}
