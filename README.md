@@ -1,4 +1,4 @@
-This repo in inspired by [node-arp](https://github.com/nekuz0r/node-arp)
+This module is inspired by [node-arp](https://github.com/nekuz0r/node-arp)
 
 Function set static MAC address of arp table which wrapped in Promise
 
