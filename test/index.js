@@ -11,9 +11,11 @@ describe('api spec test', () => {
     lib.setMac(testIP, testMac).then(done)
   })
 
-  it('read result', () => {
+  it('read result', function (done) {
+    this.timeout(20000)
     lib.getMAC(testIP, (err, mac) => {
       mac.should.equal(testMac)
+      done()
     })
   })
 })
