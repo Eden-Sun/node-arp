@@ -1,6 +1,7 @@
 require('should')
+
 var lib = require('../index.js')
-var arp = require('node-arp')
+
 const testIP = '192.168.16.1'
 const testMac = '5c:3d:33:af:6b:5' + Math.floor(Math.random() * 10)
 // const testMac = '5c:3d:33:af:6b:56'
@@ -11,7 +12,7 @@ describe('api spec test', () => {
   })
 
   it('read result', () => {
-    arp.getMAC(testIP, (err, mac) => {
+    lib.getMAC(testIP, (err, mac) => {
       mac.should.equal(testMac)
     })
   })

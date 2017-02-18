@@ -1,5 +1,5 @@
 const { spawn } = require('child_process')
-
+const arp = require('node-arp')
 // function getInterfaces () {
 //   let options = []
 //   let allInterfaces = require('os').networkInterfaces()
@@ -15,7 +15,8 @@ const { spawn } = require('child_process')
 //
 // console.log(getInterfaces())
 
-module.exports.setMac = function (ip, mac) {
+module.exports = arp
+arp.setMac = function (ip, mac) {
   return new Promise((resolve, reject) => {
     var arp = spawn("arp", [ "-S", ip, mac ])
     var buffer = '';
