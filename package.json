@@ -17,6 +17,7 @@
   "scripts": {
     "lint": "eslint index.js",
     "test": "sudo mocha test",
+    "test-win": "mocha test",
     "build": "babel src -d dist"
   },
   "repository": {
