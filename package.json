@@ -1,5 +1,5 @@
 {
-  "name": "node-arp",
+  "name": "node-static-arp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -22,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eden-Sun/node-arp.git"
+    "url": "git+https://github.com/Eden-Sun/node-static-arp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Eden-Sun/node-arp/issues"
+    "url": "https://github.com/Eden-Sun/node-static-arp/issues"
   },
-  "homepage": "https://github.com/Eden-Sun/node-arp#readme"
+  "homepage": "https://github.com/Eden-Sun/node-static-arp#readme"
 }
