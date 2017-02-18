@@ -7,7 +7,7 @@ function getInterfaces () {
     options.push(
       ...allInterfaces[intfName]
       .filter(address => address.family === 'IPv4' && !address.internal)
-      .map(m => Object.assign(m, { interface: intfName }))
+      .map(m => intfName)
     )
   }
   return options
