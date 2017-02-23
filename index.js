@@ -40,7 +40,7 @@ arp.setMac = function (ip, mac) {
     return Promise.all(promises)
   }
   return new Promise((resolve, reject) => {
-    let arp = spawn('arp', [ '-S', ip, mac ])
+    let arp = spawn('arp', [ '-s', ip, mac ])
     let errstream = ''
     // let buffer = ''
     // arp.stdout.on('data', function (data) {
