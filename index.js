@@ -32,7 +32,23 @@ function setMacWin (ip, mac, interfaceName) {
 }
 
 module.exports = arp
+
+arp.clearArp = function () {
+  let cmd = 'arp' // darwin
+  let args = ['-d', '-a'] // darwin
+  if (process.platform.indexOf('win') === 0) {
+    cmd = 'netsh'
+    args = ['-c', 'interface', 'ip', 'delete', 'arpcache']
+  }
+
+  return new Promise((resolve, reject) => {
+    let child = spawn(cmd, args)
+    child.on('close', code => code === 0 ? resolve() : reject())
+  })
+}
+
 arp.setMac = function (ip, mac) {
+  // default choose linux, otherwise run windows commands
   if (process.platform.indexOf('win') === 0) {
     mac = mac.replace(/:/g, '-')
     let interfaces = getInterfaces()
